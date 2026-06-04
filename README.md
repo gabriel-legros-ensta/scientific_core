@@ -7,10 +7,32 @@ blocks and basic optimization algorithms intended for learning,
 experimentation, and small-scale projects.
 
 Contents
-- src/: library source modules (e.g. `linalg.py`, `optimization.py`)
-- tests/: unit tests for core functionality
-- notebooks/: short experiments and examples
-- requirements.txt, pyproject.toml: packaging / dependencies
+- `src/`: library source modules (e.g. `linalg.py`, `optimization.py`, `least_squares.py`, `utils.py`)
+- `tests/`: unit tests for core functionality
+- `notebooks/`: short experiments and examples
+- `requirements.txt`, `pyproject.toml`: packaging / dependencies
+
+Project layout
+
+mini_scicomp/
+│
+├── src/
+│   ├── linalg.py
+	├── optimization.py
+	├── least_squares.py
+	└── utils.py
+│
+├── tests/
+│   ├── test_linalg.py
+	├── test_optimization.py
+	└── test_least_squares.py
+│
+├── notebooks/
+│   └── experiments.ipynb
+│
+├── README.md
+├── requirements.txt
+└── pyproject.toml
 
 Quick start
 
@@ -52,17 +74,10 @@ API (high level)
 - Additional helpers: batch / stochastic gradient descent, conjugate
 	gradient (may be present as experimental implementations)
 
-Development notes
-- Keep implementations readable and well-tested rather than highly
-	optimized — the goal is pedagogy and clarity.
-- Add unit tests under `tests/` when extending the API.
+`least_squares.py` - small utilities for solving least-squares problems:
+- `linear_least_squares(A, b)` — solve min_x ||Ax - b||_2 (normal equations / QR)
+- `ridge_regression(A, b, alpha)` — Tikhonov regularized least squares
 
-Contributing
-- Open an issue or submit a pull request with tests and a short
-	description of the change.
+`utils.py` - helper utilities used across the package (data conversion,
+simple input validation, small I/O helpers, etc.).
 
-License
-- No license specified. Add a `LICENSE` file if you want to set one.
-
-Contact
-- For questions or contributions, open an issue on the repository.
